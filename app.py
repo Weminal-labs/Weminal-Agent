@@ -66,14 +66,14 @@ def swap_token():
 def chatbot_with_trading():
     user_address = request.json['user_address']
     user_input = request.json['user_input']
-    try:
-      if check_valid_address(user_address) == False:
-          return jsonify({"output": "Invalid address"})    
-      else:
-        response = generate_response(user_input)
-        return {"output": response,"status": "oraidex"}
-    except:
-       return jsonify({"output": "Error in tumlum chatbot"})
+   
+    if check_valid_address(user_address) == False:
+      return jsonify({"output": "Invalid address"})    
+    else:
+      response = generate_response(user_input)
+      return {"output": response,"status": "oraidex"}
+    
+ 
 
 
 
