@@ -16,3 +16,4 @@ jupyterlab
 notebook
 langchain_experimental
 Flask-Cors
+gunicorn
