@@ -72,10 +72,10 @@ def chatbot_with_trading():
     else:
       response = generate_response(user_input)
       return {"output": response,"status": "oraidex"}
-    
+
  
 
 
 
 if __name__ == "__main__":
-    app.run(host='0.0.0.0', port=80,debug=True)
+    app.run(debug=True)

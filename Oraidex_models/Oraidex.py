@@ -19,10 +19,6 @@ load_secrets()
 config = Config()
 
 
-
-
-
-
 class OraidexSceener():
     def __init__(self, verbose=False):
         self.screener_df = None
@@ -56,10 +52,11 @@ class OraidexSceener():
         self.agent = create_pandas_dataframe_agent(
                 ChatOpenAI(model_name='gpt-3.5-turbo-1106', temperature=0),
                 self.screener_df,
-                max_iterations=4,
+                max_iterations=1,
                 verbose=True,
                 handle_parsing_errors=True,
                 agent_type=AgentType.OPENAI_FUNCTIONS,
+
             )
         
     def fetch_for_all_symbols(self):
@@ -92,7 +89,6 @@ class OraidexSceener():
         """
         
         url = "https://api.oraidex.io/v1/candles?pair=" + url_pair + "&startTime=" + str(self.startime) + "&endTime=" + str(self.endtime) + "&tf=" + self.timeframe
-        #url = "https://api.oraidex.io/v1/candles?pair=orai-ibc%2FA2E2EEC9057A4A1C2C0A6A4C78B0239118DF5F278830F50B4A6BDD7A66506B78&startTime=1701166429&endTime=1705904029&tf=14400"
         payload = {}
         headers = {}
         response = requests.request("GET", url, headers=headers, data=payload).json()

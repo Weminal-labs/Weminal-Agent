@@ -41,9 +41,11 @@ def generate_response(query: str):
     
     agent = initialize_agent(
         tools, llm, agent=AgentType.ZERO_SHOT_REACT_DESCRIPTION, verbose=True,
+        max_iterations=2,
         memory=readonlymemory, 
         handle_parsing_errors=True,
         metadata={ "agent_name": "OraidexCrypto" }
+        
     )
 
     response = agent.run(
