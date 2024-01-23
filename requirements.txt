@@ -17,3 +17,4 @@ notebook
 langchain_experimental
 Flask-Cors
 gunicorn
+gevent
