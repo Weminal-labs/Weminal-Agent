@@ -17,3 +17,4 @@ notebook
 langchain_experimental
 ta
 pandas_ta
+flask_cors
