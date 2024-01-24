@@ -52,7 +52,7 @@ class OraidexSceener():
         self.agent = create_pandas_dataframe_agent(
                 ChatOpenAI(model_name='gpt-3.5-turbo-1106', temperature=0),
                 self.screener_df,
-                max_iterations=1,
+                max_iterations=3,
                 verbose=True,
                 handle_parsing_errors=True,
                 agent_type=AgentType.OPENAI_FUNCTIONS,
@@ -110,7 +110,7 @@ class OraidexSceener():
         return df
     
     def run(self, query):
-        safety = "Ensure that valid json is used with internal tools and functions. Also, outputs should be in well formatted JSON. Also please check to ensure that we stay within the model's context limit." \
+        safety = "Ensure that valid json is used with internal tools and functions. Also, outputs should be in well formatted JSON." \
         "You have to give number output price, date if it relevant." 
         return self.agent.run("Please use this natural language prompt: " + query + " " + safety)
 

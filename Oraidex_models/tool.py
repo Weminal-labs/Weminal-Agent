@@ -20,12 +20,7 @@ import requests
 from langchain.tools.base import ToolException
 
 
-def _handle_error(error: ToolException) -> str:
-    return (
-        "The following errors occurred during tool execution:"
-        + error.args[0]
-        + "Please try another tool."
-    )
+
 
 
 def search_price_orai(query: str)-> str:

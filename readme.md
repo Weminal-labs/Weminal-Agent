@@ -1,6 +1,11 @@
 # Repository Usage Guide
 
 This guide will walk you through the steps to use the repository and run it locally.
+## 
+```
+python3 -m venv env 
+
+```
 
 ## Prerequisites
 
