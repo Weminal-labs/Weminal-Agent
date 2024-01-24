@@ -52,7 +52,7 @@ class OraidexSceener():
         self.agent = create_pandas_dataframe_agent(
                 ChatOpenAI(model_name='gpt-3.5-turbo-1106', temperature=0),
                 self.screener_df,
-                max_iterations=3,
+                max_iterations=4,
                 verbose=True,
                 handle_parsing_errors=True,
                 agent_type=AgentType.OPENAI_FUNCTIONS,
@@ -102,8 +102,7 @@ class OraidexSceener():
     def format_data(self, data):
         df = pd.DataFrame(data['data'])
         df['time'] = df['time'].apply(lambda x: datetime.datetime.fromtimestamp(int(x)))
-        # format time if you want 
-        # df['time'] = df['time'].dt.strftime('%d-%m-%Y')
+       
         df['time'] = pd.to_datetime(df['time'])
         df = df.sort_values(by='time', ascending=False)
         
@@ -112,7 +111,7 @@ class OraidexSceener():
     def run(self, query):
         safety = "Ensure that valid json is used with internal tools and functions. Also, outputs should be in well formatted JSON." \
         "You have to give number output price, date if it relevant." 
-        return self.agent.run("Please use this natural language prompt: " + query + " " + safety)
+        return self.agent.run("Please use this natural prompt: " + query + " " + safety)
 
 
 

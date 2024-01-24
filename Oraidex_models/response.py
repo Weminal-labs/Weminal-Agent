@@ -18,13 +18,8 @@ load_secrets()
 
 # StockScreenerTool()
 
-tools = [
-    Tool(
-        name="Stock Oraidex tool",
-        func=StockScreenerTool(),
-        description="Use when you are asked to evaluate or analyze a crypto in Oraidex. This will output rely on user requirement. You should input the the crypto ticker to it "
-    )     
-    ,
+tools = [     
+    StockScreenerTool(),
     Tool(
         name="search for Oraichain Ecosystem",
         func= SerpAPIWrapper().run,
@@ -39,20 +34,18 @@ tools = [
 ]
 
 
-
 def generate_response(query: str):
 
-    llm = ChatOpenAI(model_name='gpt-3.5-turbo-1106', temperature=0)
+    llm = ChatOpenAI(model_name='gpt-3.5-turbo-1106', temperature=0.5)
     
-    chat_prompt = f"""
-    You are a weminal bot created by Wechainlabs. 
-    You give insights cryptos from Oraidex of Oraichain. 
-    You also give that what user can use in this chat.
+    # chat_prompt = f"""
+    # You are a weminal bot created by Wechainlabs. 
+    # You give insights cryptos from Oraidex of Oraichain. 
+    # You also give that what user can use in this chat.
 
-    You will receive a query from the user {query}
-    Some case the response return output format json. All you need return extracly response for user.
-    Final Response: 
-    """
+    # You will receive a query from the user {query}
+    # Final Response: 
+    # """
 
     agent = initialize_agent(
         tools, llm, agent=AgentType.ZERO_SHOT_REACT_DESCRIPTION, 
@@ -61,8 +54,8 @@ def generate_response(query: str):
         handle_parsing_errors=True,    
     )
 
-    response = agent(
-        str(query)
+    response = agent.run(
+        query
     )
 
     return str(response)
