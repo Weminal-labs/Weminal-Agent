@@ -27,8 +27,9 @@ class StockPriceTool(BaseTool):
     description = "Useful for when you need to swap from native(Orai token send )to Another token (Fungible Token or we) - Token received. Return a msg output "
 
     def _run(self, token_send: str, token_received: str,inputamount: str):
-       
+        
         inputamount = float(inputamount)*1000000
+        inputamount =  int(inputamount)
         native_to_Cw20_Pair_contract = "orai1agqfdtyd9lr0ntmfjtzl4f6gyswpeq4z4mdnq4npdxdc99tcw35qesmr9v"
 
         msg = {
