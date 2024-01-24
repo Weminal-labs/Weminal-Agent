@@ -28,7 +28,7 @@ class StockPriceTool(BaseTool):
 
     def _run(self, token_send: str, token_received: str,inputamount: str):
        
-        inputamount = int(inputamount)*1000000
+        inputamount = float(inputamount)*1000000
         native_to_Cw20_Pair_contract = "orai1agqfdtyd9lr0ntmfjtzl4f6gyswpeq4z4mdnq4npdxdc99tcw35qesmr9v"
 
         msg = {
