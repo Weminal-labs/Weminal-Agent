@@ -11,6 +11,7 @@ from langchain.agents import Tool
 from langchain.agents import initialize_agent
 from langchain.chat_models import ChatOpenAI
 from langchain.agents.agent_types import AgentType
+from langchain import LLMChain
 
 
 load_secrets()
@@ -36,16 +37,9 @@ tools = [
 
 def generate_response(query: str):
 
-    llm = ChatOpenAI(model_name='gpt-3.5-turbo-1106', temperature=0.5)
+    llm = ChatOpenAI(model_name='gpt-3.5-turbo-16k', temperature=0.5)
+    # llm_chain = LLMChain(llm=llm,prompt=chat_prompt)
     
-    # chat_prompt = f"""
-    # You are a weminal bot created by Wechainlabs. 
-    # You give insights cryptos from Oraidex of Oraichain. 
-    # You also give that what user can use in this chat.
-
-    # You will receive a query from the user {query}
-    # Final Response: 
-    # """
 
     agent = initialize_agent(
         tools, llm, agent=AgentType.ZERO_SHOT_REACT_DESCRIPTION, 

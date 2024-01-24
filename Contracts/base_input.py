@@ -43,7 +43,7 @@ class StockPriceTool(BaseTool):
                 "amount": str(inputamount)
                 }
             }}
-        }
+        } 
 
         Response = {
         "Action": "Excute",
