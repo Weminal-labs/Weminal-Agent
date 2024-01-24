@@ -30,3 +30,5 @@ Before you begin, make sure you have the following:
 ## Running the Application
 
 
+
+Here is the generated msg JSON to swap 5 ORAI to ORAI234124124125:\n\n```json\n{\n  \"swap\": {\n    \"offer_asset\": {\n      \"info\": {\n        \"native_token\": {\n          \"denom\": \"orai\"\n        }\n      },\n      \"amount\": \"5000000\"\n    }\n  }\n}\n\nPlease note that this is just the msg JSON and you will need to use it with the appropriate transaction function to actually perform the swap.

@@ -66,9 +66,9 @@ def generate_msg(text: str):
 
     return response
 
-# Response = generate_msg("Swap 5 orai to Oha token")
-# print(Response['anwser'])
 
 
+# print(answer)
+# print(msg)
 # print(Response['msg'])
 

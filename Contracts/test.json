@@ -1,0 +1,4 @@
+{
+    "answer": "To convert 5 ORAI to ORAI234124124125, you need to send a swap message with the following details:",
+    "msg": "{\"msg\":{\"swap\":{\"offer_asset\":{\"info\":{\"native_token\":{\"denom\":\"orai\"}},\"amount\":\"5000000\"}}}}}"
+}

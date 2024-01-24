@@ -87,7 +87,6 @@ class OraidexSceener():
         Returns:
             dataframe: The response as a dataframe.
         """
-        
         url = "https://api.oraidex.io/v1/candles?pair=" + url_pair + "&startTime=" + str(self.startime) + "&endTime=" + str(self.endtime) + "&tf=" + self.timeframe
         payload = {}
         headers = {}

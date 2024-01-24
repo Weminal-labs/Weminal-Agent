@@ -18,3 +18,4 @@ langchain_experimental
 Flask-Cors
 gunicorn
 gevent
+tabulate

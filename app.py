@@ -10,7 +10,7 @@ app = Flask(__name__)
 CORS(app)
 
 from Oraidex_models.response import generate_response
-
+from Contracts.Cross_swap import generate_msg
 
 def check_valid_address(address):
     if address == None or address.startswith("orai") == False:
@@ -18,15 +18,17 @@ def check_valid_address(address):
     return True
 
 
-@app.route("/")
+@app.route("/",methods=["GET"])
 def home():
   return jsonify({"output": "Hello, cross-origin-world!"})
+
 
 @app.route("/swapNative",methods=["POST"])
 def swap_token():
     # native sang cw20
     user_address = request.json['user_address']
     user_input = request.json['user_input']
+    pair_contract = request.json['pair_contract']
 
     try: 
         if check_valid_address(user_address) == False:
@@ -34,33 +36,11 @@ def swap_token():
     except: 
         print("An exception occurred")
 
-    inputamount = "1000000"
-   
-    Pair_contract = "orai1agqfdtyd9lr0ntmfjtzl4f6gyswpeq4z4mdnq4npdxdc99tcw35qesmr9v"
-    
-    msg = {"msg":{"swap": {
-        "offer_asset": {
-          "info": {
-            "native_token": {
-              "denom": "orai"
-            }
-          },
-          "amount": str(inputamount)
-          }
-        }}
-      }
-    
-    Response = {
-        "Action": "Excute",
-        "Parameters":msg,
-        "inputamout": str(inputamount),
-        "Pair_contract": str(Pair_contract),
-        "output": "Swap native token to Oraichain"
-    }
-
-    data = jsonify(Response)
+    Response = generate_msg(user_input)
+    answer = Response['answer']
+    msg = Response['msg']
+    data = jsonify({"answer":answer,"msg": msg})
     return data
-
 
 @app.route("/chatoraidex",methods=["POST"])
 def chatbot_with_trading():
@@ -74,8 +54,5 @@ def chatbot_with_trading():
       return {"output": response,"status": "oraidex"}
 
  
-
-
-
 if __name__ == "__main__":
     app.run(debug=True)
