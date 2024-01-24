@@ -3,7 +3,6 @@ from flask_cors import CORS
 from flask import *
 from flask import jsonify
 import base64
-
 import json
 
 app = Flask(__name__)

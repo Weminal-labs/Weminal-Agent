@@ -61,7 +61,7 @@ class StockPriceTool(BaseTool):
 
 class Response(BaseModel):
     """Final response to the question being asked"""
-    answer: str = Field(description="The answer of Weminal bot about their transaction success")    
+    answer: str = Field(description="Only answer 'you swap success from native token to other token' and some answer like that not relevant to the output from tool.")    
     msg: str = Field(description="The output from tool")
     
 

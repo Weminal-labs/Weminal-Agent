@@ -24,7 +24,8 @@ load_secrets()
 
 prompt = ChatPromptTemplate.from_messages(
     [
-        ("system", "Your name is Weminal assistant. Your mission is to help people to generate msg json to swap toke ."),
+        ("system", "Your name is Weminal assistant.\
+         Your mission is to help people to generate msg json to swap toke . Only answer you swap success n"),
         ("user", "{input}"),
         MessagesPlaceholder(variable_name="agent_scratchpad"),
     ]
@@ -67,6 +68,7 @@ def generate_msg(text: str):
     return response
 
 
+print(generate_msg("swap 10 orai token to cw20 token"))
 
 # print(answer)
 # print(msg)

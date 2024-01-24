@@ -11,20 +11,15 @@ from langchain_core.prompts import ChatPromptTemplate, MessagesPlaceholder
 from langchain.utils.openai_functions import convert_pydantic_to_openai_function
 from langchain.agents.format_scratchpad import format_to_openai_function_messages
 from langchain.agents import AgentExecutor
-
-
 from secret import load_secrets
 from Contracts.base_input import StockPriceTool, Response, parse
 load_secrets()
 
-# tools = [StockPriceTool()]
-# functions = [format_tool_to_openai_function(t) for t in tools]
-
-
 
 prompt = ChatPromptTemplate.from_messages(
     [
-        ("system", "Your name is Weminal assistant. Your mission is to help people to generate msg json to swap toke ."),
+        ("system", "Your name is Weminal assistant.\
+         Your mission is to help people to generate msg json to swap toke . Only answer you swap success n"),
         ("user", "{input}"),
         MessagesPlaceholder(variable_name="agent_scratchpad"),
     ]
@@ -66,9 +61,4 @@ def generate_msg(text: str):
 
     return response
 
-# Response = generate_msg("Swap 5 orai to Oha token")
-# print(Response['anwser'])
-
-
-# print(Response['msg'])
 
