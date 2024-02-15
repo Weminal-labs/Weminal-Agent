@@ -20,3 +20,9 @@ gunicorn
 gevent
 tabulate
 steamship
+torch
+pytorch 
+torchvision 
+torchaudio 
+jupyter 
+jupyterlab
